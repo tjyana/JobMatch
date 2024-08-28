@@ -1,6 +1,6 @@
 import streamlit as st
-from src.resumematch_functions import match_percentage
-from BERT_function import match_resume
+from src.functions import match_percentage
+from src.BERT_function import match_resume
 from dotenv import load_dotenv
 import re
 import os
@@ -28,8 +28,10 @@ def main():
         # Process the inputs
         st.session_state.resume_text = resume_text
         # st.session_state.jd_text = jd_text
-        output = match_resume(resume_text)
-        process_inputs(resume_text, output)
+        with st.spinner("Finding jobs..."):
+            output = match_resume(resume_text)
+        with st.spinner("Assessing fit..."):
+            process_inputs(resume_text, output)
 
 
 def process_inputs(resume_text, output):
