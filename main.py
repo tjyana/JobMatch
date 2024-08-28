@@ -1,5 +1,5 @@
 import streamlit as st
-from src.functions import match_percentage
+from src.functions import match_percentage, read_resume
 from src.BERT_function import match_resume
 from dotenv import load_dotenv
 import re
@@ -20,8 +20,16 @@ def main():
     st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best.""")
 
     # Input fields
-    resume_text = st.sidebar.text_area("Resume Information", height=200)
-    # jd_text = st.sidebar.text_area("Job Description", height=200)
+    # Select input method: Copy and paste text or upload a file
+    resume_method = st.sidebar.radio("""Choose Resume input method:""", ("File", "Text"), horizontal = True)
+
+    # Input: Text
+    if resume_method == "Text":
+        resume_text = st.sidebar.text_area("Paste Resume text", height=200)
+    # Input: File Upload
+    elif resume_method == "File":
+        resume_file = st.sidebar.file_uploader("Upload Resume file", type=["pdf", "docx", "txt"])
+        resume_text = read_resume(resume_file)
 
     # Submit button
     if st.sidebar.button("Submit"):
