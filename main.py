@@ -16,7 +16,7 @@ import time
 
 def main():
     # Title
-    st.sidebar.title("ResumeMatch")
+    st.sidebar.title("JobMatch")
     st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best.""")
 
     # Input fields
@@ -29,13 +29,13 @@ def main():
     # Input: File Upload
     elif resume_method == "File":
         resume_file = st.sidebar.file_uploader("Upload Resume file", type=["pdf", "docx", "txt"])
-        resume_text = read_resume(resume_file)
+        if resume_file is not None:
+            resume_text = read_resume(resume_file)
 
     # Submit button
     if st.sidebar.button("Submit"):
         # Process the inputs
         st.session_state.resume_text = resume_text
-        # st.session_state.jd_text = jd_text
         with st.spinner("Finding jobs..."):
             output = match_resume(resume_text)
         with st.spinner("Assessing fit..."):
