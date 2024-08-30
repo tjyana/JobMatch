@@ -14,7 +14,8 @@ import time
 # pdf upload: upload resume and JD as pdfs
 
 
-########### original main function ############
+# trying to create all chatgpt version of the main function
+# pretty much taking out match_resume and doing everything within match_percentage
 
 def main():
     # Title
