@@ -38,16 +38,20 @@ def main_BERT():
     if st.sidebar.button("Submit"):
         # Process the inputs
         st.session_state.resume_text = resume_text
-        with st.spinner("Finding jobs..."):
-            output = match_resume(resume_text)
-        with st.spinner("Assessing fit..."):
-            process_inputs(resume_text, output)
+        process_inputs(resume_text, output)
+        # with st.spinner("Finding jobs..."):
+        #     output = match_resume(resume_text)
+        # with st.spinner("Assessing fit..."):
+        #     process_inputs(resume_text, output)
 
 
-def process_inputs(resume_text, output):
-    st.write("You might be a good fit for these jobs:")
-    results = match_percentage(resume_text, output)
-    st.write(" ", results)
+def process_inputs(resume_text):
+    with st.spinner("Finding jobs..."):
+        output = match_resume(resume_text)
+    with st.spinner("Assessing fit..."):
+        st.write("You might be a good fit for these jobs:")
+        results = match_percentage(resume_text, output)
+        st.write(" ", results)
 
     # Function to display the final output:
     # Top 3 job matches plus estimated qualification percentage
