@@ -2,8 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-# run to scrape job descriptions from careers page and save in jobs.csv
-url = 'https://hrmos.co/pages/moneyforward/jobs?category=1707294702136684546'
+
 
 # Function to scrape many times and keep appending
 def scrape_careerspage(url, jobs):
