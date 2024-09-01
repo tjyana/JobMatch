@@ -36,22 +36,13 @@ def main():
         if resume_file is not None:
             resume_text = read_resume(resume_file)
 
-    # # Submit button
-    # if st.sidebar.button("Submit"):
-    #     # Process the inputs
-    #     st.session_state.resume_text = resume_text
-    #     with st.spinner("Finding jobs..."):
-    #         output = match_resume(resume_text)
-    #     with st.spinner("Assessing fit..."):
-    #         process_inputs(resume_text, output)
-
     match = st.sidebar.radio("Match with ", ("ChatGPT", "BERT"))
 
 
     # Submit button
     if st.sidebar.button("Submit"):
         # Process the inputs
-        st.session_state.resume_text = resume_text
+        # st.session_state.resume_text = resume_text
 
         if match == "ChatGPT":
             submit_GPT(resume_text)
