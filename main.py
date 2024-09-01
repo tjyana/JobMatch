@@ -47,7 +47,7 @@ def main():
     if st.sidebar.button("Submit"):
         # Process the inputs
         st.session_state.resume_text = resume_text
-        process_inputs(resume_text, output)
+        process_inputs(resume_text)
         # with st.spinner("Finding jobs..."):
         #     output = match_resume(resume_text)
         # with st.spinner("Assessing fit..."):
