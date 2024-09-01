@@ -84,12 +84,26 @@ def find_jobs(resume_text, jd_text):
 
                 You will be given 1 resume and a dataframe containing many job titles along with their descriptions.
                 I would like you to:
-                1. Please analyze the resume, and find 3 main skills and experience level with that skill (example: 3 years with ruby on rails, 2 years with flutter, 1 year with react).
-                2. Find the 3 best matching jobs based on the qualifications in the job description and the skills and experiences in the resume.
+
+                1. Please analyze the resume, and categorize the candidate into one of the following categories:
+                    a. If the candidate is either an engineer or non-engineer job seeker.
+                        Engineer: Engineering, QA, Data Science, SRE, Product Management, Design, etc.
+                        Non-engineer roles: Marketing, Sales, Customer Success, Customer Support, Operations, HR, Legal, etc.
+                    b. What specific type of role the candidate is experienced most in.
+                        Engineer:
+                            Development: Backend, Frontend, Fullstack, Mobile, etc.
+                                For Development candidates, please also find the programming language they are most experienced in.
+                            Other engineer: SRE, Data Engineer, Data Scientist, QA, etc.
+                            Product: Product Management, Project Management, Design, Scrum Master, etc.
+                        Non-engineer roles:
+                            Marketing, Sales, Customer Support, Operations, Finance, HR, Legal, etc.
+                2. Find the 3 best matching jobs for this candidate based on the job title and qualifications in the job description.
                 Please make sure to consider the type of job the candidate is looking for or has experience in, and the type of job the job description is for.
-                (ex: an engineer should not be recommended for a marketing job. A customer support person should not be recommended for a software engineering job).
+                (ex: a backend engineer should be recommended for backend engineer positions, not a marketing job. A customer support person should not be recommended for a software engineering job).
+
                 3. After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
                 Please especially focus on the mandatory qualifications of the job and penalize heavily for any missing mandatory qualifications.
+                Recommending multiple types of jobs is fine, but please make sure to recommend the best matching jobs first.
 
                 FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles.):
                 ```
