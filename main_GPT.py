@@ -47,17 +47,22 @@ def main():
 
         jobs = pd.read_csv('resume-data/jobs.csv')
 
-        # Assess fit and display results
-        with st.spinner("Assessing fit..."):
-            process_inputs(resume_text, jobs)
+        with st.spinner("Finding jobs..."):
+            st.write("You might be a good fit for these jobs:")
+            results = find_jobs(resume_text, jobs)
+            st.write(" ", results)
+
+        # # Assess fit and display results
+        # with st.spinner("Assessing fit..."):
+        #     process_inputs(resume_text, jobs)
 
 
-def process_inputs(resume_text, output):
+# def process_inputs(resume_text, output):
+#     jobs = pd.read_csv('resume-data/jobs.csv')
 
-
-    st.write("You might be a good fit for these jobs:")
-    results = find_jobs(resume_text, jobs)
-    st.write(" ", results)
+#     st.write("You might be a good fit for these jobs:")
+#     results = find_jobs(resume_text, jobs)
+#     st.write(" ", results)
 
     # Function to display the final output:
     # Top 3 job matches plus estimated qualification percentage
