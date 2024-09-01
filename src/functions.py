@@ -86,12 +86,12 @@ def find_jobs(resume_text, jd_text):
                 I would like you to:
                 1. Please analyze the resume, and find 3 main skills and experience level with that skill (example: 3 years with ruby on rails, 2 years with flutter, 1 year with react).
                 2. Find the 3 best matching jobs based on the qualifications in the job description and the skills and experiences in the resume.
-                3. After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
                 Please make sure to consider the type of job the candidate is looking for or has experience in, and the type of job the job description is for.
                 (ex: an engineer should not be recommended for a marketing job. A customer support person should not be recommended for a software engineering job).
+                3. After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
                 Please especially focus on the mandatory qualifications of the job and penalize heavily for any missing mandatory qualifications.
 
-                FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles):
+                FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles.):
                 ```
                 ## Job 1: [Job Title 1]
                 Estimated match percentage: [percentage]
