@@ -18,7 +18,7 @@ import pandas as pd
 # trying to create all chatgpt version of the main function
 # pretty much taking out match_resume and doing everything within match_percentage
 
-def main_GPT():
+def main():
     # Title
     st.sidebar.title("JobMatch")
     st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best.""")
