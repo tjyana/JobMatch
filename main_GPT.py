@@ -47,17 +47,17 @@ def main():
         #     st.write(" ", results)
 
 
-        with st.spinner("Finding jobs..."):
-            process_inputs(resume_text)
+
+        process_inputs(resume_text)
 
 
 def process_inputs(resume_text):
+    with st.spinner("Finding jobs..."):
+        jobs = pd.read_csv('resume-data/jobs.csv')
 
-    jobs = pd.read_csv('resume-data/jobs.csv')
-
-    st.write("You might be a good fit for these jobs:")
-    results = find_jobs(resume_text, jobs)
-    st.write(" ", results)
+        st.write("You might be a good fit for these jobs:")
+        results = find_jobs(resume_text, jobs)
+        st.write(" ", results)
 
 
 
