@@ -8,9 +8,8 @@ from main_GPT import submit_GPT
 def main():
     # Title
     st.sidebar.title("JobMatch")
-    st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best. \n
-                     履歴書を入力して、ピッタリの求人を探そう！
-                     """)
+    st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best.""")
+    st.sidebar.write("""履歴書を入力して、ピッタリの求人を探そう！""")
 
     # Input fields
     # Select input method: Copy and paste text or upload a file
