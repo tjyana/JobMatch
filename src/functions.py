@@ -83,23 +83,11 @@ def find_jobs(resume_text, jd_text):
                 Job Descriptions: ```{jd_text}```
 
                 You will be given 1 resume and a dataframe containing many job titles along with their descriptions.
-                Please analyze the resume, and find the 3 best matching jobs based on the qualifications in the job description and the skills and experiences in the resume.
-
-                After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
-
-                Please use the below grading rubric to determine the estimated qualification percentage (do NOT output the rubric in the final response):
-                Please penalize heavily for any missing mandatory qualifications.
-
-                # Qualifications:
-                [✅/❌] [Qualification 1]: [What you can tell from the resume]
-                [✅/❌] [Qualification 2]: [What you can tell from the resume]
-                etc.
-
-                # Nice-to-have:
-                [✅/❌] [Nice-to-have 1]: [What you can tell from the resume]
-                [✅/❌] [Nice-to-have 2]: [What you can tell from the resume]
-                etc.
-
+                I would like you to:
+                1. Please analyze the resume, and find 3 main skills and experience level with that skill (example: 3 years with ruby on rails, 2 years with flutter, 1 year with react).
+                2. Find the 3 best matching jobs based on the qualifications in the job description and the skills and experiences in the resume.
+                3. After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
+                Please especially focus on the mandatory qualifications of the job and penalize heavily for any missing mandatory qualifications.
 
                 FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles):
                 ```
