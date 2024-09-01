@@ -1,11 +1,10 @@
 import streamlit as st
-from src.functions import match_percentage, read_resume, find_jobs
+from src.functions import match_percentage, read_resume
 from src.BERT_function import match_resume
 from dotenv import load_dotenv
 import re
 import os
 import time
-import pandas as pd
 
 # load_dotenv()
 # api_key = os.getenv('OPENAI_API_KEY')
@@ -15,10 +14,9 @@ import pandas as pd
 # pdf upload: upload resume and JD as pdfs
 
 
-# trying to create all chatgpt version of the main function
-# pretty much taking out match_resume and doing everything within match_percentage
+########### original main function ############
 
-def main_GPT():
+def main_BERT():
     # Title
     st.sidebar.title("JobMatch")
     st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best.""")
@@ -38,40 +36,18 @@ def main_GPT():
 
     # Submit button
     if st.sidebar.button("Submit"):
-
-        # jobs = pd.read_csv('resume-data/jobs.csv')
-
-        # with st.spinner("Finding jobs..."):
-        #     st.write("You might be a good fit for these jobs:")
-        #     results = find_jobs(resume_text, jobs)
-        #     st.write(" ", results)
-
-
+        # Process the inputs
+        st.session_state.resume_text = resume_text
         with st.spinner("Finding jobs..."):
-            process_inputs(resume_text)
+            output = match_resume(resume_text)
+        with st.spinner("Assessing fit..."):
+            process_inputs(resume_text, output)
 
 
-def process_inputs(resume_text):
-
-    jobs = pd.read_csv('resume-data/jobs.csv')
-
+def process_inputs(resume_text, output):
     st.write("You might be a good fit for these jobs:")
-    results = find_jobs(resume_text, jobs)
+    results = match_percentage(resume_text, output)
     st.write(" ", results)
-
-
-
-        # # Assess fit and display results
-        # with st.spinner("Assessing fit..."):
-        #     process_inputs(resume_text, jobs)
-
-
-# def process_inputs(resume_text, output):
-#     jobs = pd.read_csv('resume-data/jobs.csv')
-
-#     st.write("You might be a good fit for these jobs:")
-#     results = find_jobs(resume_text, jobs)
-#     st.write(" ", results)
 
     # Function to display the final output:
     # Top 3 job matches plus estimated qualification percentage
