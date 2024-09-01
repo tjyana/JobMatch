@@ -6,3 +6,4 @@ scikit-learn
 pandas
 sentence-transformers
 pdfplumber
+fugashi
