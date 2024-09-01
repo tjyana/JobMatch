@@ -43,13 +43,13 @@ def match_percentage(resume_text, jd_text):
                 FINAL RESPONSE OUTPUT FORMAT:
                 ```
                 ## Job 1: [Job Title 1]
-                Estimated qualification percentage: [percentage]
+                Estimated match percentage: [percentage]
 
                 ## Job 2: [Job Title 2]
-                Estimated qualification percentage: [percentage]
+                Estimated match percentage: [percentage]
 
                 ## Job 3: [Job Title 3]
-                Estimated qualification percentage: [percentage]
+                Estimated match percentage: [percentage]
                 ```
 
                 """
