@@ -53,9 +53,9 @@ def main():
         # Process the inputs
         st.session_state.resume_text = resume_text
 
-        if match = "ChatGPT":
+        if match == "ChatGPT":
             submit_GPT(resume_text)
-        elif match = "BERT":
+        elif match == "BERT":
             submit_BERT(resume_text)
 
         # process_inputs(resume_text)
