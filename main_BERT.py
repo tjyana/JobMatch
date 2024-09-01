@@ -16,7 +16,7 @@ import time
 
 ########### original main function ############
 
-def main_BERT():
+def main():
     # Title
     st.sidebar.title("JobMatch")
     st.sidebar.write("""Fill in your resume info to see which Money Forward job matches you best.""")
@@ -38,14 +38,14 @@ def main_BERT():
     if st.sidebar.button("Submit"):
         # Process the inputs
         st.session_state.resume_text = resume_text
-        process_inputs(resume_text, output)
+        process_inputs(resume_text)
         # with st.spinner("Finding jobs..."):
         #     output = match_resume(resume_text)
         # with st.spinner("Assessing fit..."):
         #     process_inputs(resume_text, output)
 
 
-def process_inputs(resume_text):
+def submit_BERT(resume_text):
     with st.spinner("Finding jobs..."):
         output = match_resume(resume_text)
     with st.spinner("Assessing fit..."):
