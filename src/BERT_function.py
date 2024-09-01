@@ -15,7 +15,8 @@ def match_resume(resume_text):
 
     # Step 1: Load the pre-trained model
     # model = SentenceTransformer('all-MiniLM-L6-v2')
-    model = SentenceTransformer('sentence-transformers/paraphrase-xlm-r-multilingual-v1')
+    # model = SentenceTransformer('sentence-transformers/paraphrase-xlm-r-multilingual-v1')
+    model = SentenceTransformer('cl-tohoku/bert-base-japanese')
 
     # Step 2: Encode job descriptions into embeddings
     job_embeddings = model.encode(df['Job Title'].tolist(), convert_to_tensor=True)
