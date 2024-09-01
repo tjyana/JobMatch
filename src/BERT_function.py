@@ -6,6 +6,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 '''
 BERT model to match resume to job descriptions
 Separate file for this function because of size of imports and dependencies
+Use semantic similarity to match resume to job descriptions
 '''
 
 def match_resume(resume_text):

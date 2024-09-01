@@ -44,6 +44,11 @@ def save_to_csv(jobs):
     print("Data successfully saved to jobs.csv")
 
 
+def scrape_and_save(url_list):
+    jobs = loop_scrape(url_list)
+    save_to_csv(jobs)
+
+
 
 # # Function to scrape job descriptions from careers page ONCE
 # def scrape_careerspage(url):
