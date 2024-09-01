@@ -1,6 +1,8 @@
 import streamlit as st
 from src.functions import match_percentage, read_resume
 from src.BERT_function import match_resume
+from main_BERT import submit_BERT
+from main_GPT import submit_GPT
 from dotenv import load_dotenv
 import re
 import os
@@ -43,15 +45,20 @@ def main():
     #     with st.spinner("Assessing fit..."):
     #         process_inputs(resume_text, output)
 
+    match = st.sidebar.radio("Match with ", ("ChatGPT", "BERT"))
+
+
     # Submit button
     if st.sidebar.button("Submit"):
         # Process the inputs
         st.session_state.resume_text = resume_text
-        process_inputs(resume_text)
-        # with st.spinner("Finding jobs..."):
-        #     output = match_resume(resume_text)
-        # with st.spinner("Assessing fit..."):
-        #     process_inputs(resume_text, output)
+
+        if match = "ChatGPT":
+            submit_GPT(resume_text)
+        elif match = "BERT":
+            submit_BERT(resume_text)
+
+        # process_inputs(resume_text)
 
 
 def process_inputs(resume_text):
