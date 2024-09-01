@@ -82,8 +82,8 @@ def find_jobs(resume_text, jd_text):
                 Resume: ```{resume_text}```
                 Job Descriptions: ```{jd_text}```
 
-                You will be given 1 resume and many job titles along with their descriptions.
-                Please analyze the resume, and find the 3 best matching jobs based on the resume.
+                You will be given 1 resume and a dataframe containing many job titles along with their descriptions.
+                Please analyze the resume, and find the 3 best matching jobs based on the qualifications in the job description and the skills and experiences in the resume.
 
                 After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
 
@@ -101,7 +101,7 @@ def find_jobs(resume_text, jd_text):
                 etc.
 
 
-                FINAL RESPONSE OUTPUT FORMAT:
+                FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles):
                 ```
                 ## Job 1: [Job Title 1]
                 Estimated match percentage: [percentage]
