@@ -108,7 +108,8 @@ def find_jobs(resume_text, jd_text):
                 3. After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
                 Please especially focus on the mandatory qualifications of the job and penalize heavily for any missing mandatory qualifications.
 
-                4. Please provide the final response output in the following format. No need to output the above analysis in final response:
+                4. Please provide the final response output in the following format.
+                Do not output the above analysis in final response. Only output the final response in the following format:
 
                 FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles.):
                 ```
