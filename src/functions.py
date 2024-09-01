@@ -97,13 +97,18 @@ def find_jobs(resume_text, jd_text):
                             Product: Product Management, Project Management, Design, Scrum Master, etc.
                         Non-engineer roles:
                             Marketing, Sales, Customer Support, Operations, Finance, HR, Legal, etc.
+
                 2. Find the 3 best matching jobs for this candidate based on the job title and qualifications in the job description.
                 Please make sure to consider the type of job the candidate is looking for or has experience in, and the type of job the job description is for.
-                (ex: a backend engineer should be recommended for backend engineer positions, not a marketing job. A customer support person should not be recommended for a software engineering job).
+                (ex: a backend engineer should be recommended for backend engineer positions, not a marketing job. A customer support person should not be recommended for a software engineering job, etc.).
+                It's better if the candidate is recommended same type of job they are currently in.
+                It's ok if the job titles are not an exact match, but they should be in the same category.
+                Recommending multiple types of jobs is fine, but please make sure to recommend the best matching jobs first.
 
                 3. After you've identified the 3 best matching jobs, please compare the resume to each job description and give an estimated match percentage for each job.
                 Please especially focus on the mandatory qualifications of the job and penalize heavily for any missing mandatory qualifications.
-                Recommending multiple types of jobs is fine, but please make sure to recommend the best matching jobs first.
+
+                4. Please provide the final response output in the following format. No need to output the above analysis in final response:
 
                 FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles.):
                 ```
