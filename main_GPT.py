@@ -1,10 +1,11 @@
 import streamlit as st
-from src.functions import match_percentage, read_resume
+from src.functions import match_percentage, read_resume, find_jobs
 from src.BERT_function import match_resume
 from dotenv import load_dotenv
 import re
 import os
 import time
+import pandas as pd
 
 # load_dotenv()
 # api_key = os.getenv('OPENAI_API_KEY')
@@ -37,17 +38,25 @@ def main():
 
     # Submit button
     if st.sidebar.button("Submit"):
-        # Process the inputs
-        st.session_state.resume_text = resume_text
-        with st.spinner("Finding jobs..."):
-            output = match_resume(resume_text)
+        # # Process the inputs
+        # st.session_state.resume_text = resume_text
+
+        # # Find jobs
+        # with st.spinner("Finding jobs..."):
+        #     output = match_resume(resume_text)
+
+        jobs = pd.read_csv('resume-data/jobs.csv')
+
+        # Assess fit and display results
         with st.spinner("Assessing fit..."):
-            process_inputs(resume_text, output)
+            process_inputs(resume_text, jobs)
 
 
 def process_inputs(resume_text, output):
+
+
     st.write("You might be a good fit for these jobs:")
-    results = match_percentage(resume_text, output)
+    results = find_jobs(resume_text, jobs)
     st.write(" ", results)
 
     # Function to display the final output:
