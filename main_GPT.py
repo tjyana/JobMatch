@@ -63,11 +63,9 @@ def process_inputs(resume_text):
 
 def submit_GPT(resume_text):
     with st.spinner("Finding jobs..."):
-        # jobs = pd.read_csv('resume-data/jobs.csv')
-        csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
-        jobs = pd.read_csv(csv_path)
-
-
+        jobs = pd.read_csv('resume-data/jobs.csv')
+        # csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
+        # jobs = pd.read_csv(csv_path)
 
         st.write("You might be a good fit for these jobs:")
         results = find_jobs(resume_text, jobs)
