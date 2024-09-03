@@ -1,6 +1,6 @@
 import streamlit as st
 from src.functions import read_resume
-from main_BERT import submit_BERT
+from main_BERT import submit_BERT_multilingual, submit_BERT_minilm
 from main_GPT import submit_GPT
 
 
@@ -24,15 +24,17 @@ def main():
         if resume_file is not None:
             resume_text = read_resume(resume_file)
 
-    match = st.sidebar.radio("Match method (マッチ方法)", ("ChatGPT", "BERT"))
+    match = st.sidebar.radio("Match method (マッチ方法)", ("ChatGPT", "BERT (MiniLM)", "BERT (Multilingual)"))
 
     # Submit button
     if st.sidebar.button("Submit"):
 
         if match == "ChatGPT":
             submit_GPT(resume_text)
-        elif match == "BERT":
-            submit_BERT(resume_text)
+        elif match == "BERT (MiniLM)":
+            submit_BERT_minilm(resume_text)
+        elif match == "BERT (Multilingual)":
+            submit_BERT_multilingual(resume_text)
 
 
 
