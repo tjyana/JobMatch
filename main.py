@@ -1,6 +1,6 @@
 import streamlit as st
 from src.functions import read_resume
-from main_BERT import submit_BERT_multilingual, submit_BERT_minilm
+from main_BERT import submit_BERT_multilingual, submit_BERT_minilm, process_inputs
 from main_GPT import submit_GPT
 
 
@@ -30,11 +30,14 @@ def main():
     if st.sidebar.button("Submit"):
 
         if match == "ChatGPT":
-            submit_GPT(resume_text)
+            output = submit_GPT(resume_text)
         elif match == "BERT (MiniLM)":
-            submit_BERT_minilm(resume_text)
+            output = submit_BERT_minilm(resume_text)
         elif match == "BERT (Multilingual)":
-            submit_BERT_multilingual(resume_text)
+            output = submit_BERT_multilingual(resume_text)
+
+        process_inputs(resume_text, output)
+
 
 
 
