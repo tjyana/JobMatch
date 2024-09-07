@@ -6,13 +6,17 @@ import streamlit as st
 
 # Local
 load_dotenv()
-api_key = os.getenv('OPENAI_API_KEY') # create a variable in .env file 'GOOGLE_API_KEY' and add the api key there
+api_key = os.getenv('OPENAI_API_KEY')
 
 # Streamlit
 if api_key is None:
     api_key = st.secrets['OPENAI_API_KEY']
 
 def match_percentage(resume_text, jd_text):
+    '''
+    Function to calculate the match percentage between the resume and job description.
+    Used in both the BERT and GPT models.
+    '''
 
     # streamlit
     client = OpenAI()
