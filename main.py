@@ -1,6 +1,6 @@
 import streamlit as st
 from src.UI import UI_resume_input, UI_display_results
-from src.main_BERT import results_BERT, results_GPT
+from src.main_BERT import top3_BERT, top3_GPT, results_BERT, results_GPT
 
 
 def main():
@@ -16,9 +16,11 @@ def main():
     # Submit button
     if st.sidebar.button("Submit"):
         if match == "ChatGPT":
-            results = results_GPT(resume_text)
+            top3 = top3_GPT(resume_text)
+            results = results_GPT(resume_text, top3)
         else:
-            results = results_BERT(resume_text, match)
+            top3 = top3_BERT(resume_text, match)
+            results = results_BERT(resume_text, top3)
 
         UI_display_results(results)
 

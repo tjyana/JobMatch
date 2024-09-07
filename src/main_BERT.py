@@ -150,7 +150,7 @@ def search_GPT(resume_text, jd_text):
     return content
 
 
-####### Top 3 Functions (SEPARATE) #######
+####### get top3 orchestrator (SEPARATE) #######
 
 def top3_BERT(resume_text, match):
     with st.spinner("Finding jobs..."):
@@ -169,7 +169,7 @@ def top3_GPT(resume_text):
         return top3
 
 
-####### Match Percentage Functions (SEPARATE) #######
+####### Match Percentage Functions #######
 
 def match_percentage(resume_text, jd_text):
     '''
