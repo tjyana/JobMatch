@@ -1,7 +1,22 @@
 from openai import OpenAI
 import pdfplumber
+from dotenv import load_dotenv
+import os
+import streamlit as st
+
+# Local
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
+
+# Streamlit
+if api_key is None:
+    api_key = st.secrets['OPENAI_API_KEY']
 
 def match_percentage(resume_text, jd_text):
+    '''
+    Function to calculate the match percentage between the resume and job description.
+    Used in both the BERT and GPT models.
+    '''
 
     # streamlit
     client = OpenAI()
