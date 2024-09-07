@@ -1,6 +1,6 @@
 import streamlit as st
 from src.UI import UI_resume_input
-from main_BERT import process_inputs, submit_BERT
+from src.main_BERT import process_inputs, submit_BERT
 from main_GPT import submit_GPT
 
 
