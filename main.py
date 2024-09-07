@@ -1,6 +1,6 @@
 import streamlit as st
 from src.UI import UI_resume_input, UI_display_results
-from processing import top3_BERT, top3_GPT, results_BERT, results_GPT
+from src.processing import top3_BERT, top3_GPT, results_BERT, results_GPT
 
 
 def main():
