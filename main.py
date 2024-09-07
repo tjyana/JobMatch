@@ -26,7 +26,7 @@ def main():
 
     resume_text = UI_resume_input()
 
-    match = st.sidebar.radio("Match method (マッチ方法)", ("ChatGPT", "BERT (MiniLM)", "BERT (Multilingual)"))
+    match = st.sidebar.radio("Match method (マッチ方法)", ("ChatGPT", "BERT (MiniLM)", "BERT (Multilingual)", "BERT (cl-tohoku)", "BERT (sonoisa)"))
 
     # Submit button
     if st.sidebar.button("Submit"):
