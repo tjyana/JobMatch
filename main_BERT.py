@@ -13,10 +13,10 @@ Use semantic similarity to match resume to job descriptions
 '''
 
 def get_df():
-    # csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
-    # df = pd.read_csv(csv_path)
-    df = pd.read_csv('resume-data/jobs.csv')
-    print('get_df df:', df.head())
+    csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
+    df = pd.read_csv(csv_path)
+    # df = pd.read_csv('resume-data/jobs.csv')
+    # print('get_df df:', df.head())
     return df
 
 
