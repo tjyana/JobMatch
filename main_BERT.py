@@ -4,6 +4,7 @@ import os
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 
 
 
@@ -31,8 +32,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 # -------------- below should b ok
 
 def get_df():
-    csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
-    df = pd.read_csv(csv_path)
+    # csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
+    # df = pd.read_csv(csv_path)
+    df = pd.read_csv('resume-data/jobs.csv')
+
     return df
 
 # def get_model(match):
@@ -56,6 +59,8 @@ def get_model(match):
     "BERT (sonoisa)": 'sonoisa/sentence-bert-base-ja-mean-tokens'
     }
     model = SentenceTransformer(model_dict[match])
+
+    print('get_model model:', model_dict[match])
     return model
 
 def get_top3(model, resume_text, df):
@@ -89,6 +94,8 @@ def get_top3(model, resume_text, df):
         }
         results.append(result)
 
+    print('get_top3 results:', results)
+
     return results
 
 
@@ -96,6 +103,7 @@ def match_resume(resume_text, match):
     df = get_df()
     model = get_model(match)
     results = get_top3(model, resume_text, df)
+    print('match_resume results:', results)
     return results
 
 
@@ -103,6 +111,7 @@ def match_resume(resume_text, match):
 def submit_BERT(resume_text, match):
     with st.spinner("Finding jobs..."):
         output = match_resume(resume_text, match)
+    print('submit_BERT output:', output)
     return output
 
 def process_inputs(resume_text, output):
