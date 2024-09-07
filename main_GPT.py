@@ -10,4 +10,4 @@ def submit_GPT(resume_text):
         st.write("You might be a good fit for these jobs ")
         st.write("この仕事があってるかも")
         results = find_jobs(resume_text, jobs)
-        st.write(" ", results)
+        return results
