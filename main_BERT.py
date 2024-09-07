@@ -71,6 +71,7 @@ def get_top3(model, resume_text, df):
     resume = resume_text
 
     # Step 4: Encode resume into an embedding
+    print(f"Resume text: {resume}")
     resume_embedding = model.encode([resume], convert_to_tensor=True)
 
     # Step 5: Calculate cosine similarities
