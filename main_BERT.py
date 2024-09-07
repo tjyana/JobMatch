@@ -7,29 +7,10 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 
-
-
-# def submit_BERT_multilingual(resume_text):
-#     with st.spinner("Finding jobs..."):
-#         output = match_resume_multilingual(resume_text)
-#     with st.spinner("Assessing fit..."):
-#         st.write("You might be a good fit for these jobs ")
-#         st.write("この仕事があってるかも")
-#         results = match_percentage(resume_text, output)
-#         st.write(" ", results)
-
-
-# ------------- in progress below
-# adjust to take new match_resume
-
-
-
-
-
-
-
-
-# -------------- below should b ok
+'''
+BERT models to match resume to job descriptions
+Use semantic similarity to match resume to job descriptions
+'''
 
 def get_df():
     # csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
@@ -37,18 +18,6 @@ def get_df():
     df = pd.read_csv('resume-data/jobs.csv')
     print('get_df df:', df.head())
     return df
-
-# def get_model(match):
-#     # Step 1: Load the pre-trained model
-#     if match == "MiniLM":
-#         model = SentenceTransformer('all-MiniLM-L6-v2')
-#     elif match == "Multilingual":
-#         model = SentenceTransformer('sentence-transformers/paraphrase-xlm-r-multilingual-v1')
-#     elif match == "cl-tohoku":
-#         model = SentenceTransformer('cl-tohoku/bert-base-japanese')
-#     elif match == "sonoisa":
-#         model = SentenceTransformer('sonoisa/sentence-bert-base-ja-mean-tokens')
-#     return model
 
 
 def get_model(match):
@@ -62,6 +31,7 @@ def get_model(match):
 
     print('get_model model:', model_dict[match])
     return model
+
 
 def get_top3(model, resume_text, df):
     # Step 2: Encode job descriptions into embeddings
@@ -96,7 +66,6 @@ def get_top3(model, resume_text, df):
         results.append(result)
 
     print('get_top3 results:', results)
-
     return results
 
 
@@ -104,9 +73,9 @@ def match_resume(resume_text, match):
     df = get_df()
     model = get_model(match)
     results = get_top3(model, resume_text, df)
+
     print('match_resume results:', results)
     return results
-
 
 
 def submit_BERT(resume_text, match):
@@ -114,6 +83,7 @@ def submit_BERT(resume_text, match):
         output = match_resume(resume_text, match)
     print('submit_BERT output:', output)
     return output
+
 
 def process_inputs(resume_text, output):
     with st.spinner("Assessing fit..."):
