@@ -28,6 +28,8 @@ def scrape_careerspage(url, jobs):
 
     return jobs
 
+
+# feed the list of URLs (eg. careers page pg1, pg2, pg3 etc) and loop through each URL
 def loop_scrape(url_list):
     jobs = []
     for url in url_list:
@@ -35,6 +37,7 @@ def loop_scrape(url_list):
 
     return jobs
 
+# save to pdf
 def save_to_csv(jobs):
     # Create DataFrame and save to CSV
     df = pd.DataFrame(jobs)
@@ -43,6 +46,7 @@ def save_to_csv(jobs):
     print("Data successfully saved to jobs.csv")
 
 
+# full execution of scraping and saving
 def scrape_and_save(url_list):
     jobs = loop_scrape(url_list)
     save_to_csv(jobs)
