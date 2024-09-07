@@ -15,4 +15,7 @@ def UI_resume_input():
         resume_file = st.sidebar.file_uploader("File Upload (アップロード)", type=["pdf", "docx", "txt"])
         if resume_file:
             resume_text = read_resume(resume_file)
+            if not resume_text:
+                st.error("Unsupported file type. Please upload a PDF, DOCX, or TXT file.")
+                return None
             return resume_text
