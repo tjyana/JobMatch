@@ -14,8 +14,8 @@ Use semantic similarity to match resume to job descriptions
 
 def get_df():
     csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../resume-data/jobs.csv'))
-    df = pd.read_csv(csv_path)
-    return df
+    jobs_df = pd.read_csv(csv_path)
+    return jobs_df
 
 
 def get_model(match):
@@ -31,9 +31,9 @@ def get_model(match):
     return model
 
 
-def get_top3(model, resume_text, df):
+def search_BERT(model, resume_text, jobs_df):
     # Step 2: Encode job descriptions into embeddings
-    job_embeddings = model.encode(df['Job Title'].tolist(), convert_to_tensor=True)
+    job_embeddings = model.encode(jobs_df['Job Title'].tolist(), convert_to_tensor=True)
 
     # Step 3: Example resume data
     resume = resume_text
@@ -52,40 +52,40 @@ def get_top3(model, resume_text, df):
     top_3_indices = similarities[0].argsort()[-3:][::-1]  # Sort in descending order and get top 5
 
     # Step 7: Retrieve the top 5 matching job titles and descriptions
-    top_3_matches = df.iloc[top_3_indices]
+    top_3_matches = jobs_df.iloc[top_3_indices]
 
     # Step 8: Print the results
-    results = []
+    top3 = []
     for idx, row in top_3_matches.iterrows():
         result = {
             "Title": row['Job Title'],
             "Description": row['Job Description']
         }
-        results.append(result)
+        top3.append(result)
 
-    print('get_top3 results:', results)
-    return results
+    print('get_top3 top3:', top3)
+    return top3
 
 
-def match_resume(resume_text, match):
-    df = get_df()
+def top3_BERT(resume_text, match):
+    jobs_df = get_df()
     model = get_model(match)
-    results = get_top3(model, resume_text, df)
+    top3 = search_BERT(model, resume_text, jobs_df)
 
-    print('match_resume results:', results)
-    return results
+    print('match_resume top3:', top3)
+    return top3
 
 
 def submit_BERT(resume_text, match):
     with st.spinner("Finding jobs..."):
-        output = match_resume(resume_text, match)
-    print('submit_BERT output:', output)
-    return output
+        top3 = top3_BERT(resume_text, match)
+    print('submit_BERT output:', top3)
+    return top3
 
 
-def process_inputs(resume_text, output):
+def process_inputs(resume_text, top3):
     with st.spinner("Assessing fit..."):
         st.write("You might be a good fit for these jobs ")
         st.write("この仕事があってるかも")
-        results = match_percentage(resume_text, output)
+        results = match_percentage(resume_text, top3)
         st.write(" ", results)

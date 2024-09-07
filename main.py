@@ -18,11 +18,11 @@ def main():
     # Submit button
     if st.sidebar.button("Submit"):
         if match == "ChatGPT":
-            output = submit_GPT(resume_text)
+            top3 = submit_GPT(resume_text)
         else:
-            output = submit_BERT(resume_text, match)
+            top3 = submit_BERT(resume_text, match)
 
-        process_inputs(resume_text, output)
+        process_inputs(resume_text, top3)
 
 
 
