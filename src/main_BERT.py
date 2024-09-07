@@ -76,6 +76,7 @@ def top3_BERT(resume_text, match):
         print('match_resume top3:', top3)
         return top3
 
+
 def get_results(resume_text, top3):
     with st.spinner("Assessing fit..."):
         results = match_percentage(resume_text, top3)
@@ -84,5 +85,5 @@ def get_results(resume_text, top3):
 
 def process_inputs(results):
     st.write("You might be a good fit for these jobs ")
-    st.write("この仕事があってるかも"))
+    st.write("この仕事があってるかも")
     st.write(" ", results)
