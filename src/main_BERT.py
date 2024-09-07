@@ -68,24 +68,21 @@ def search_BERT(model, resume_text, jobs_df):
 
 
 def top3_BERT(resume_text, match):
-    jobs_df = get_df()
-    model = get_model(match)
-    top3 = search_BERT(model, resume_text, jobs_df)
-
-    print('match_resume top3:', top3)
-    return top3
-
-
-def submit_BERT(resume_text, match):
     with st.spinner("Finding jobs..."):
-        top3 = top3_BERT(resume_text, match)
-    print('submit_BERT output:', top3)
-    return top3
+        jobs_df = get_df()
+        model = get_model(match)
+        top3 = search_BERT(model, resume_text, jobs_df)
 
+        print('match_resume top3:', top3)
+        return top3
 
-def process_inputs(resume_text, top3):
+def get_results(resume_text, top3):
     with st.spinner("Assessing fit..."):
-        st.write("You might be a good fit for these jobs ")
-        st.write("この仕事があってるかも")
         results = match_percentage(resume_text, top3)
-        st.write(" ", results)
+        return results
+
+
+def process_inputs(results):
+    st.write("You might be a good fit for these jobs ")
+    st.write("この仕事があってるかも"))
+    st.write(" ", results)

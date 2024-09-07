@@ -1,5 +1,5 @@
 from openai import OpenAI
-import pdfplumber
+
 from dotenv import load_dotenv
 import os
 import streamlit as st
@@ -11,6 +11,7 @@ api_key = os.getenv('OPENAI_API_KEY')
 # Streamlit
 if api_key is None:
     api_key = st.secrets['OPENAI_API_KEY']
+
 
 def match_percentage(resume_text, jd_text):
     '''
@@ -72,9 +73,6 @@ def match_percentage(resume_text, jd_text):
         ]
     )
 
-    print(completion)
-    print(completion.choices[0].message)
-
     content = completion.choices[0].message.content
 
     return content
@@ -126,7 +124,7 @@ def find_jobs(resume_text, jd_text):
                 4. Please provide the final response output in the following format.
                 Do not output the above analysis in final response. Only output the final response in the following format:
 
-                FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles.):
+                FINAL RESPONSE OUTPUT FORMAT (please make sure to include the full job titles. DO NOT output the rubric in the final response):
                 ```
                 ## Job 1: [Job Title 1]
                 Estimated match percentage: [percentage]
@@ -143,30 +141,6 @@ def find_jobs(resume_text, jd_text):
         ]
     )
 
-    print(completion)
-    print(completion.choices[0].message)
-
     content = completion.choices[0].message.content
 
     return content
-
-
-def read_resume(file):
-    '''
-    PDFPlumber is a Python library that extracts text, tables, and images from PDF files.
-    read_resume function reads the resume file and extracts text from it.
-    '''
-    if file.type == "text/plain":
-        # Read text file
-        text = str(file.read(), "utf-8")
-    elif file.type == "application/pdf":
-        # Extract text from PDF
-        with pdfplumber.open(file) as pdf:
-            text = '\n'.join(page.extract_text() for page in pdf.pages if page.extract_text())
-    elif file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-        # Extract text from DOCX
-        doc = docx.Document(file)
-        text = '\n'.join(paragraph.text for paragraph in doc.paragraphs if paragraph.text)
-    else:
-        text = "Unsupported file type"
-    return text
